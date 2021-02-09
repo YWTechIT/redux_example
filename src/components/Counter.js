@@ -1,4 +1,5 @@
 import React, { useReducer, useState } from "react";
+import CounterContainer from "./CounterContainer";
 import { CounterReduce, doIncrease, doDecrease, changeDiff } from "./reducer";
 
 const Counter = () => {
@@ -17,7 +18,7 @@ const Counter = () => {
     dispatch(doIncrease());
   };
   const onDecrease = () => {
-    dispatch({'type': 'decrease'});
+    dispatch({ type: "decrease" });
   };
 
   const onChange = (e) => {
@@ -27,17 +28,13 @@ const Counter = () => {
 
   return (
     <>
-      <h1>{number}</h1>
-      <h1>{diff}</h1>
-
-      <input
-        value={diff}
-        placeholder="숫자를 입력하세요"
+      <CounterContainer
+        number={number}
+        diff={diff}
         onChange={onChange}
-      ></input>
-
-      <button onClick={onIncrease}>+</button>
-      <button onClick={onDecrease}>-</button>
+        onIncrease={onIncrease}
+        onDecrease={onDecrease}
+      />
     </>
   );
 };
