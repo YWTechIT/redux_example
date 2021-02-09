@@ -1,18 +1,22 @@
 import React, { useState } from 'react';
 
 const Counter = () => {
-    const [number, setNumber] = useState(0);
-    const [diff, setDiff] = useState(1);
 
+    // 초기 선언 값
+    // const [number, setNumber] = useState(0);
+    // const [diff, setDiff] = useState(1);
+    const [counter, setCounter] = useState({'number':0, 'diff': 1})
+    const {number, diff} = counter
+    
     const changeDiff = (e) => {
         const diff = parseInt(e.target.value);
-        setDiff(diff);
+        setCounter((counter) => ({...counter, diff: diff})) ;
     }
     const onIncrease = () => {
-        setNumber((number) => number + diff)
+        setCounter((counter) => ({...counter, number: number + diff}))
     }
     const onDecrease = () => {
-        setNumber((number) => number - diff)
+        setCounter((counter) => ({...counter, number: number - diff}))
     }
     
     return(
